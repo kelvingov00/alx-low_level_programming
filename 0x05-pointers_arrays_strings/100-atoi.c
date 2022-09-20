@@ -3,44 +3,34 @@
 /**
  * _atoi -  convert a string
  * Description - a func thst converts a string
- * @s: he string to be converted
- * Return: int
+ * @s: the string to be converted
+ * Return: integer
  */
 
 int _atoi(char *s)
 {
-	int a = 0;
-	int b = 0;
-	int c = 0;
-	int length = 0;
-	int d = 0;
-	int number = 0;
+	unsigned int count = 0, size = 0, oi = 0, pn = 1, m = 1, i;
 
-	while (s[length] != '\0')
-		length++;
-
-	while (a < length && d == 0)
+	while (*(s + count) != '\0')
 	{
-		if (s[a] == '-')
-			++b;
+		if (size > 0 && (*(s + count) < '0' || *(s + count) > '9'))
+			break;
 
-		if (s[a] >= '0' && s[a] <= '9')
+		if (*(s + count) == '-')
+			pn *= -1;
+
+		if ((*(s + count) >= '0') && (*(s + count) <= '9'))
 		{
-			number = s[a] - '0';
-
-			if (b % 2)
-				number = -number
-
-					c = c * 10 + number;
-			d = 1;
-
-			if (s[a + 1] < '0' || s[a + 1] > '9')
-				break;
-			d = 0;
+			if (size > 0)
+				m *= 10;
+			size++;
 		}
-		a++;
+		count++;
 	}
-	if (d == 0)
-		return (0);
-	return (c);
+	for (i = count - size; i < count; i++)
+	{
+		oi = oi + ((*(s + i) - 48) * m);
+		m /= 10;
+	}
+	return (oi * pn);
 }
