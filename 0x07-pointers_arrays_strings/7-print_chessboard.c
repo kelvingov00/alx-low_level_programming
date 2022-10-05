@@ -2,6 +2,7 @@
 
 /**
  * print_chessboard - a function that prints the chessboard
+ * Description: prints the chessboard
  * @a: array
  * Return: 0
  */
