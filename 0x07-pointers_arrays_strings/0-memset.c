@@ -2,7 +2,7 @@
 
 /**
  * _memset - fills memory with a const byte
- * @s: pointer 
+ * @s: pointer
  * @b: value
  * @n: bytes
  * Return: dest
